@@ -1,46 +1,44 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "stdlib.h"
+#include "stdio.h"
+#include "time.h"
 
- 
-int main() {
-const int size=100;      
-int ar[size];           
+#define ROW_SIZE 3
+#define COL_SIZE 3
 
+int main()
+{
+    int mas[ROW_SIZE][COL_SIZE];
+    int i, j;
+    srand(time(NULL));
+    int max, min;
 
- for(int i=0;i<size;i++)
- {
-   ar[i]=rand()%100;     
-   printf("Array[%d] = %d\n",i,ar[i]);    
- }
- 
-
-
- int min = ar[0],max = ar[0],min_index,max_index,tmp;  
-
-  for (int i = 0; i < size; i++)  
-
-    if (ar[i] < min)              
-
-    {
-    min = ar[i];                  
-    min_index = i;                
+    for(i = 0; i < ROW_SIZE; i++) {
+        printf("[%d] ", i);
+        for(j = 0; j < COL_SIZE; j++) {
+            mas[i][j] = rand() % 100;
+            printf("%d ", mas[i][j]);
+        }
+        printf("\n");
     }
 
-        else if  (ar[i] > max)    
-        {
-        max = ar[i];              
-        max_index = i;            
+    max = min = mas[0][0];
+
+    for(i = 0; i < ROW_SIZE; i++) {
+        for(j = 0; j < COL_SIZE; j++) {
+           
+           if(mas[i][j] > max) {
+               max = mas[i][j];
+           }
+
+           if(mas[i][j] < min) {
+               min = mas[i][j];
+           }
+
         }
+    }
 
-    tmp = ar[min_index];           
-    ar[min_index] = ar[max_index]; 
-    ar[max_index] = tmp;           
+    printf("max = %d \n" , max);
+    printf("min = %d \n" , min);  
 
-    
-
-    printf("max: %d\n",max);
-    printf("min: %d\n",min);
-    printf("Max ind: %d\n ",max_index);
-    printf("Min ind: %d\n ",min_index);
-            return 0;
-}
+    return 0;
+} 
