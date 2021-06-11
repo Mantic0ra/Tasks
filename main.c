@@ -3,13 +3,13 @@
 
  
 int main() {
-const int size=100;      // инициализация размера массива
-int ar[size];           // инициализация массива
+const int size=100;      
+int ar[size];           
 
 
  for(int i=0;i<size;i++)
  {
-   ar[i]=rand()%20;     
+   ar[i]=rand()%100;     
    printf("Array[%d] = %d\n",i,ar[i]);    
  }
  
